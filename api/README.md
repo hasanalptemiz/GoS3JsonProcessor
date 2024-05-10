@@ -1,20 +1,37 @@
-## First, you should run command
-docker compose up -d 
+## Getting Started
 
-## After that you need to check my-mongodb container DNS with CLI
+To run this project locally, follow these steps:
+
+1. Start the Docker containers by running the following command:
+
+docker compose up -d
+
+
+2. Once the containers are up and running, obtain the IP address of the `my-mongodb` container using the following command:
+
 
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' my-mongodb
 
-## Enviroment variables (.env)
-API_PORT=8080
-API_TOKEN = QJl6eEuAJAfunviF
-MONGO_URI=mongodb://admin:password@192.168.228.2:27017
-MONGO_DB= golangcimri
 
-## After that, all you have to do is go to the post office and test the get record enpoint. I got a very fast get endpoint using compound indexing. I shared the postman link with this address review@cimri.com. Api can be tested by entering the postman from the invitation or using the request link below.
+3. Update the environment variables in the `.env` file to match your configuration:
+
+API_PORT=<your_api_port>
+MONGO_URI=<your_mongodb_uri>
+MONGO_DB=S3JsonProcessor
+
+
+4. Set up the API token securely. Instead of directly including it in the README, it's recommended to manage secrets securely, such as using environment variables or a secrets management tool.
+
+5. After setting up the environment variables, you can test the API endpoints. Access the Postman collection provided via email or use the following request link:
 
 http://localhost:8080/api/v1/private/get/record/150003
 
-Header :
 
-Api-Token : QJl6eEuAJAfunviF
+Remember to include the API token in the request header:
+
+Header:
+Api-Token: <your_api_token>
+
+
+By following these steps, you can set up and run the project locally. Make sure to securely manage your environment variables and avoid exposing sensitive information in your code or README files. If you encounter any issues, refer to the project documentation or seek assistance from the project maintainers.
+
