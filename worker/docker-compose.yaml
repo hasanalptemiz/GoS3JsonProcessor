@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  my-go-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    depends_on:
+      - my-mongodb
+    networks:
+      - my-network
+    volumes:
+      - ./.env:/app/.env
+    stdin_open: true
+    tty: true
+
+  my-mongodb:
+    container_name: my-mongodb
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - ./mongo-data:/data/db
+    networks:
+      - my-network
+
+volumes:
+  mongo-data:
+
+networks:
+  my-network:
+    driver: bridge
