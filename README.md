@@ -16,6 +16,9 @@ In general terms, a job service (worker) and a microservice (api) were written i
 
 ## Architecture Overview <a name="architecture"></a>
 
+![Örnek Resim](relations.png)
+
+
 The architecture consists of two main components:
 
 1. **Job (Worker):**
