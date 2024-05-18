@@ -1,4 +1,4 @@
-# S3JsonProcessor
+# GoS3JsonProcessor
 
 The project fetches JSON Lines (jsonl) files from AWS S3, processes them, and writes them to the database. JSONL files are fetched and processed in parallel to increase processing speed.
 
